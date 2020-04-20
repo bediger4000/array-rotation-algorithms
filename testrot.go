@@ -7,39 +7,51 @@ import (
 	"array-rotation-algorithms/rotations"
 )
 
+type RotFunc func([]string, int) int
+type RotateFunc struct {
+	fn   func([]string, int) int
+	name string
+}
+
+var rotationfunctions = []RotateFunc{
+	{fn: rotations.Cyclic, name: "Cyclic"},
+	{fn: rotations.Reversal, name: "Reversal"},
+	{fn: rotations.Rotate, name: "Rotate"},
+}
+
 func main() {
 
-	orig := []string{"a", "b", "c", "d", "e", "f", "g", "h",
-		"i", "j", "k", "l", "m", "n", "o", "p"}
+	orig := []string{
+		`a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i`, `j`, `k`, `l`, `m`,
+		`n`, `o`, `p`, `q`, `r`, `s`, `t`, `u`, `v`, `w`, `x`, `y`, `z`,
+		`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`, `J`, `K`, `L`, `M`,
+		`N`, `O`, `P`, `Q`, `R`, `S`, `T`, `U`, `V`, `W`, `X`, `Y`, `Z`,
+		`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `0`, `~`, `!`, `@`,
+		`#`, `$`, `%`, `^`, `&`, `*`, `(`, `)`, `_`, `-`, `+`, `=`, `{`,
+		`[`, `}`, `]`, `|`, `:`, `;`, `"`, `'`, `<`, `,`, `>`, `.`, `?`,
+		`/`,
+	}
 
 	for L := 2; L < len(orig); L++ {
 		for N := 1; N < L; N++ {
-			cpy := make([]string, L)
-			copy(cpy, orig)
-			rotations.Slowrotate(cpy, N)
+			std := make([]string, L)
+			copy(std, orig)
+			rotations.Slowrotate(std, N)
+			// std is the correct rotation, I hope
 
-			array1 := make([]string, L)
-			copy(array1, orig)
-			rotations.Rotate(array1, N)
+			for _, rfn := range rotationfunctions {
+				array := make([]string, L)
+				copy(array, orig)
+				rfn.fn(array, N)
 
-			if reflect.DeepEqual(cpy, array1) {
-				fmt.Printf("Rotate worked %2d -> %2d\n", L, N)
-			} else {
-				fmt.Printf("Rotate failed %2d -> %2d\n", L, N)
-				fmt.Printf("%v\n", cpy)
-				fmt.Printf("%v\n", array1)
-			}
-
-			array2 := make([]string, L)
-			copy(array2, orig)
-			rotations.Cyclic(array2, N)
-
-			if reflect.DeepEqual(cpy, array2) {
-				fmt.Printf("Cyclic worked %2d -> %2d\n", L, N)
-			} else {
-				fmt.Printf("Cyclic failed %2d -> %2d\n", L, N)
-				fmt.Printf("%v\n", cpy)
-				fmt.Printf("%v\n", array2)
+				if reflect.DeepEqual(std, array) {
+					fmt.Printf("%s worked %2d -> %2d\n", rfn.name, L, N)
+				} else {
+					fmt.Printf("%s failed %2d -> %2d\n", rfn.name, L, N)
+					fmt.Printf("%v\n", std)
+					fmt.Printf("%v\n", array)
+					return
+				}
 			}
 		}
 	}
