@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"strconv"
 
-	"rotate/rotations"
+	"array-rotation-algorithms/rotations"
 )
 
 func main() {

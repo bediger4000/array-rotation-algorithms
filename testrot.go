@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"rotate/rotations"
+	"array-rotation-algorithms/rotations"
 )
 
 func main() {
@@ -35,9 +35,9 @@ func main() {
 			rotations.Cyclic(array2, N)
 
 			if reflect.DeepEqual(cpy, array2) {
-				fmt.Printf("Cyclic rotation worked %2d -> %2d\n", L, N)
+				fmt.Printf("Cyclic worked %2d -> %2d\n", L, N)
 			} else {
-				fmt.Printf("Cyclic rotation failed %2d -> %2d\n", L, N)
+				fmt.Printf("Cyclic failed %2d -> %2d\n", L, N)
 				fmt.Printf("%v\n", cpy)
 				fmt.Printf("%v\n", array2)
 			}

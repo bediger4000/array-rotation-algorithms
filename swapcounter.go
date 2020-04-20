@@ -1,8 +1,8 @@
 package main
 
 import (
+	"array-rotation-algorithms/rotations"
 	"fmt"
-	"rotate/rotations"
 )
 
 func main() {
