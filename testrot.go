@@ -14,9 +14,9 @@ type RotateFunc struct {
 }
 
 var rotationfunctions = []RotateFunc{
-	{fn: rotations.Cyclic, name: "Cyclic"},
+	{fn: rotations.Cyclic, name: "Cyclic  "},
 	{fn: rotations.Reversal, name: "Reversal"},
-	{fn: rotations.Rotate, name: "Rotate"},
+	{fn: rotations.Rotate, name: "Rotate  "},
 }
 
 func main() {
