@@ -5,6 +5,11 @@ I got a "programming puzzle of the day [easy]" that said this:
 	Given an array and a number k that's smaller than the length of the
     array, rotate the array to the right k elements in-place.
 
+The tricky thing is the "in place" requirement,
+otherwise the easy, obvious thing is to copy elements into
+a separate array in rotation-sequence,
+using some clever indexing involving `(i + k)%n` where `n` is the length of the array.
+
 There's an easy *O(n\*k)* solution, rotate the array right by 1, k times
 
 ```go
@@ -24,11 +29,17 @@ which is hidden by the Golang multiple assignment,
 but you could do that dumb swap-by-XOR stunt to avoid even that.
 
 
-As near as I can tell, there's two commonly given ways
-of doing this cleverly.
+As near as I can tell,
+there's two other commonly given ways of doing this.
 
 1. [cyclic replacements](https://leetcode.com/articles/rotate-array/#)
-2. [repeated reversals]()
+2. [repeated reversals](https://www.geeksforgeeks.org/program-for-array-rotation-continued-reversal-algorithm/)
+
+Like a lot of this sort of programming problem,
+the search space is polluted by vaguely correct explanations
+and implementations, written mainly for absolute beginners.
+The above examples are pretty weak,
+I've re-implemented them in Go.
 
 ## My Solution
 
