@@ -7,18 +7,14 @@ package rotations
 func Cyclic(array []string, k int) (swaps int) {
 	n := len(array)
 
-	// This is the hard part: figuring out hom many times to jump
-	// items if you start at i in the array, and how many times
-	// to start at successive values of i
+	// If n and k have a GCD of 1, you end up skipping through
+	// all the indexes, next i = (i + m*k)%n.
+	// If n and k have a GCD larger than 1, you skip through
+	// the GCD number of sets of indexes. In any case, you have
+	// to stop jumping if the next index you'd change is the index
+	// you started at.
 
 	max := gcd(n, k)
-
-	// n a multiple of k: incrementing some index i by k
-	// enough times and you'll get back to i, because we're
-	// doing (i + m*k)%n to wrap the index around the array end.
-	if n%k == 0 {
-		max = k
-	}
 
 	for i := 0; i < max; i++ {
 		holder := array[i]
@@ -26,8 +22,8 @@ func Cyclic(array []string, k int) (swaps int) {
 			nxt := (j + k) % n
 			tmp := array[nxt]
 			array[nxt] = holder
-			swaps++
 			holder = tmp
+			swaps++
 			j = nxt
 			if j == i {
 				break
