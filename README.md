@@ -88,5 +88,35 @@ but less than k items have swapped into their final position.
 
 Case 1, one or more items haven't been swapped,
 either to the temporary area, or to their final destination.
+But the temporary area plus the unmoved items can be rotated
+by some number to get them,
+and the rest of the temporary area valuse,
+into their final positions.
+
+Consider an array `[a, b, c, d, e, f, g, h, i, j]` of length 10,
+to be rotated 7 to the right.
+After the moving values a, b, c to their final positions,
+the array (doing this in-place) looks like this:
+
+    [h, i, j, d, e, f, g, a, b, c]
+
+Items 'd', 'e' haven't moved, items 'h', 'i', 'j', are in the temp area.
+If we rotate the subarray `[h, i, j, d, e]` by the number of untouched
+values, we end up with a correctly rotated array.
+Rotating the subarray of elements swapped,
+but not in their final spots, and the unmoved elements works because
+the first set of moves always ends putting an element in the last
+position of the array.
+The unmoved elements new indexes "wrap around" to indexes of
+elements in the temp area, currently occupied by values not in their
+ultimate correct position.
 
 Case 2, all items have been swapped to the temporary sub-array.
+The items might not have been swapped into the correct position
+in the temporary area.
+Since the algorithm uses the temporary area indexes in order,
+all the values in it retain the correct rotational positions,
+and the temporary area can be rotated into the correct position.
+By keeping track of what index in the temporary area
+(which is k elements long) the last value got placed in,
+we can calculate by how many to rotate the temp area.
