@@ -120,3 +120,25 @@ and the temporary area can be rotated into the correct position.
 By keeping track of what index in the temporary area
 (which is k elements long) the last value got placed in,
 we can calculate by how many to rotate the temp area.
+
+## Programs
+
+I chose to have `[]string` as the array,
+so that I could see what rotations (or failures) took place
+without confusing numeric values in arrays and their numeric indexes.
+
+I don't think there needs to be a makefile to codify builds.
+`go build testrot.go` or whatever should get things to build.
+I did this on Linux, with Go `go1.14.2 linux/amd64` compiler,
+but there's nothing outrageously un-portable here.
+
+The actual rotation algorithms are in `package rotations`,
+one file per algorithm.
+
+* `testrot.go` - systematically try all rotations of n > 1 length arrays,
+and all values of k (the rotation) that make sense (1, k-1].
+Stops on the first failure.
+* `swapcounter.go` - counts the number of swaps of values between array indexes
+for all the array rotating algorithms.
+* `rev.go` - program to exercize one method of array rotation more or less
+interactively. To see an array of length 5 rotated 3, run: `./rev 3 a b c d e`
