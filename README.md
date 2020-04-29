@@ -10,7 +10,8 @@ otherwise the easy, obvious thing is to copy elements into
 a separate array in rotation-sequence,
 using some clever indexing involving `(i + k)%n` where `n` is the length of the array.
 
-There's an easy *O(n\*k)* solution, rotate the array right by 1, k times
+There's an easy *O(n\*k)* solution, rotate the array right by 1, k times.
+Here it is in [Go](https://golang.org/):
 
 ```go
 // Rotate an array by 1 rotate number of times
@@ -25,9 +26,8 @@ for i := 0; i < k; i++ {
 ```
 
 It does require space for 1 extra item
-which is hidden by the Golang multiple assignment,
-but you could do that dumb swap-by-XOR stunt to avoid even that.
-
+which is hidden by Golang multiple assignments,
+but you could do that dumb swap-by-XOR stunt to avoid that.
 
 As near as I can tell,
 there's two other commonly given ways of doing this.
