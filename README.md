@@ -90,7 +90,7 @@ Case 1, one or more items haven't been swapped,
 either to the temporary area, or to their final destination.
 But the temporary area plus the unmoved items can be rotated
 by some number to get them,
-and the rest of the temporary area valuse,
+and the rest of the temporary area values,
 into their final positions.
 
 Consider an array `[a, b, c, d, e, f, g, h, i, j]` of length 10,
@@ -142,3 +142,25 @@ Stops on the first failure.
 for all the array rotating algorithms.
 * `rev.go` - program to exercize one method of array rotation more or less
 interactively. To see an array of length 5 rotated 3, run: `./rev 3 a b c d e`
+
+## Other Problem Statements
+
+### Daily Coding Problem: Problem #758 [Medium]
+
+This problem was asked by Facebook.
+
+Write a function that rotates a list by k elements.
+For example,
+`[1, 2, 3, 4, 5, 6]`
+rotated by two becomes
+`[3, 4, 5, 6, 1, 2]`.
+Try solving this without creating a copy of the list.
+How many swap or move operations do you need?
+
+#### Analysis
+
+Is this an "easy" problem, or a "medium" problem?
+Or does the question of how many swap or moves make it into a "medium"?
+Again, we see the irrationality of the ratings given to these problems.
+
+---
